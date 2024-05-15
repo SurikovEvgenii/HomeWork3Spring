@@ -7,7 +7,13 @@ PASSWORD:
 Пишем необходимый ингридиент в строку поиска и получаем рецепт
 с этим ингридиентом
 
-![](C:\Users\Mystation\Desktop\1.JPG)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://disk.yandex.ru/i/X9elvDliH6Ohag">
+  <source media="(prefers-color-scheme: light)" srcset="https://disk.yandex.ru/d/QWQQ61FAVtwksg">
+  <img alt="Shows an illustrated sun in light mode and a moon with stars in dark mode." src="https://user-images.githubusercontent.com/25423296/163456779-a8556205-d0a5-45e2-ac17-42d089e3c3f8.png">
+</picture>
 
 
-![](C:\Users\Mystation\Desktop\2.JPG)
+
+
+
