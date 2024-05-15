@@ -9,9 +9,10 @@ public class RecipesRowMapper implements RowMapper<Recipes> {
     public Recipes mapRow(ResultSet rs, int rowNum) throws SQLException {
         Recipes recipes = new Recipes();
         recipes.setId(rs.getInt(1));
-        recipes.setDescription(rs.getString(2));
-        recipes.setShortDescription(rs.getString(3));
+        recipes.setName(rs.getString(2));
+        recipes.setDescription(rs.getString(3));
+        recipes.setShortDescription(rs.getString(4));
+        recipes.setProducts(rs.getString(5));
         return recipes;
-
     }
 }

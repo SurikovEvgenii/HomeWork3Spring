@@ -17,31 +17,17 @@ public class RecipesJDBCDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public Recipes find(int id){
-        List<Recipes> recipes = jdbcTemplate.query("SELECT * FROM recipes WHERE id=?", new Object[]{id}, new RecipesRowMapper());
+    public List<Recipes> find(String word){
+        List<Recipes> recipes = jdbcTemplate.query("SELECT * FROM recipes WHERE recipes.products LIKE concat('%', ?, '%')", new Object[]{word}, new RecipesRowMapper());
         if(recipes.isEmpty()){
             return null;
         } else {
-            return recipes.get(0);
+            return recipes;
         }
     }
 
-    public Recipes find(String word){
-        List<Recipes> recipes = jdbcTemplate.query("SELECT * FROM recipes", new RecipesRowMapper());
-        if(recipes.isEmpty()){
-            return null;
-        } else {
-            return recipes.get(0);
-        }
-    }
-
-    public Recipes findAll(){
-        List<Recipes> recipes = jdbcTemplate.query("SELECT * FROM recipes", new RecipesRowMapper());
-        if(recipes.isEmpty()){
-            return null;
-        } else {
-            return recipes.get(0);
-        }
+    public List<Recipes> findAll(){
+        return jdbcTemplate.query("SELECT * FROM recipes", new RecipesRowMapper());
     }
 
 

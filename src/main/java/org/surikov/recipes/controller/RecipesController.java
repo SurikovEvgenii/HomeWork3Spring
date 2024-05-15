@@ -3,12 +3,10 @@ package org.surikov.recipes.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.surikov.recipes.dao.RecipesJDBCDAO;
 
 @Controller
-@RequestMapping("/recipes")
 public class RecipesController {
 
     private RecipesJDBCDAO recipesJDBCDAO;
@@ -18,9 +16,14 @@ public class RecipesController {
         this.recipesJDBCDAO = recipesJDBCDAO;
     }
 
-    @GetMapping()
-    public String index(Model model) throws ClassNotFoundException {
-        model.addAttribute("recipes", recipesJDBCDAO.findAll());
-        return "recipes";
+    @GetMapping("/recipes")
+    public String recipes(Model model, @RequestParam(name = "word", required = false) String word) throws ClassNotFoundException {
+        if(word == null){
+            model.addAttribute("recipes", recipesJDBCDAO.findAll());
+            return "recipes";
+        } else {
+            model.addAttribute("recipes", recipesJDBCDAO.find(word));
+            return "recipes";
+        }
     }
 }
